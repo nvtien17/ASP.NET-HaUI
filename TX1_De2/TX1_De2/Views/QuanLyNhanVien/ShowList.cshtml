@@ -1,0 +1,62 @@
+﻿@model TX1_De2.Models.NhanVien
+
+@{
+    ViewBag.Title = "ShowList";
+}
+@{ 
+    List<TX1_De2.Models.NhanVien> list1 = ViewBag.list1;
+    List<TX1_De2.Models.NhanVien> list2 = ViewBag.list2;
+
+
+
+}
+<h2>ShowList</h2>
+
+<div>
+    <h3>Danh sách nhân viên có số ngày làm < 20</h3>
+    <table border="1" cellspacing="0">
+        <tr>
+            <th>Mã nhân viên</th>
+            <th>Họ tên</th>
+            <th>Địa chỉ</th>
+            <th>Số ngày làm</th>
+            <th>Lương ngày</th>
+        </tr>
+        @{
+    
+        }
+        @foreach (var item in list1)
+        {
+            <tr>
+                <td>@item.manv</td>
+                <td>@item.hoten</td>
+                <td>@item.diachi</td>
+                <td>@item.songaylam</td>
+                <td>@item.luongngay</td>
+            </tr>
+        }
+
+    </table>
+    <h3>Danh sách sinh viên có số lương ngày > 190000 </h3>
+    <table border="1" cellspacing="0">
+        <tr>
+            <th>Mã nhân viên</th>
+            <th>Họ tên</th>
+            <th>Địa chỉ</th>
+            <th>Số ngày làm</th>
+            <th>Lương ngày</th>
+        </tr>
+        @foreach (var item in list2)
+        {
+            <tr>
+                <td>@item.manv</td>
+                <td>@item.hoten</td>
+                <td>@item.diachi</td>
+                <td>@item.songaylam</td>
+                <td>@item.luongngay</td>
+            </tr>
+        }
+
+    </table>
+</div>
+

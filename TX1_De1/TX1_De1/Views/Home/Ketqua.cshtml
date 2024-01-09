@@ -1,0 +1,36 @@
+﻿@model TX1_De1.Models.Hang
+
+@{
+    ViewBag.Title = "Ketqua";
+}
+@{ 
+    List<TX1_De1.Models.Hang> list = ViewBag.list;
+}
+
+<style>
+    th, td {
+        padding: 0px 40px;
+    }
+</style>
+<h2>Ketqua</h2>
+
+<table border="1" cellspacing="0" cellpadding="10">
+    <tr>
+        <th>Mã hàng</th>
+        <th>Tên hàng</th>
+        <th>Loại hàng</th>
+        <th>Thành tiền</th>
+    </tr>
+    @foreach (var item in list)
+    {
+        <tr>
+            <td>@item.maHang</td>
+            <td>@item.tenHang</td>
+            <td>@item.loaiHang</td>
+            <td>@item.thanhTien</td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Back to form input", "Cau2")
+</p>

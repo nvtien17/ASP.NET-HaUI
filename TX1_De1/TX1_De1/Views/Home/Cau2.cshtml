@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Cau2";
+}
+<style>
+    table {
+        margin-top: 10%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    td {
+        padding: 7px 20px;
+    }
+</style>
+<h2>Cau2</h2>
+
+@using (Html.BeginForm("Ketqua", "Home", FormMethod.Post))
+{
+    <table border="1" cellspacing="0">
+        <tr>
+            <td>
+               @Html.Label("Mã hàng : ")
+            </td>
+            <td>
+               @Html.TextBox("maHang","")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Tên hàng : ")
+            </td>
+            <td>
+                @Html.TextBox("tenHang", "")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Loại hàng : ")
+            </td>
+            <td>
+               @{ 
+                   IEnumerable<string> loaiHangList = new List<string>
+                   {
+                       "Quần áo", "Điện tử", "Gia dụng"
+                   };
+               }
+                @Html.DropDownList("loaiHang", new SelectList(loaiHangList,loaiHangList.FirstOrDefault()),"--Chọn loại hàng--")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Đơn giá : ")
+            </td>
+            <td>
+               @Html.TextBox("donGia","")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Số lượng : ")
+            </td>
+            <td>
+                @Html.TextBox("soLuong","")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Thành tiền : ")
+            </td>
+            <td>
+               @Html.TextBox("thanhTien","",new { @disabled = "disabled" })
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" name="btnTinh" value="Tính" />
+            </td>
+        </tr>
+    </table>
+}
+

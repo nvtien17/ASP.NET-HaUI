@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Kiemtra2Demo.Models.Product>
+@{
+    ViewBag.Title = "XemDanhSach";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ThemDuLieu")
+</p>
+@using (Html.BeginForm())
+            {
+                @Html.TextBox("timkiem")
+                <input type="submit" value="Tìm kiếm" />
+            }
+<table class="table">
+    <tr>
+        <th>
+            Mã sản phẩm
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Loại sản phẩm
+        </th>
+        <th>
+            Giá nhập
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            @*Số lượng*@
+            @Html.ActionLink("Số lượng", "XemDanhSach", new {sx = ViewBag.sapxep}, new { style = "color:black" })
+        </th>
+        <th>
+            Năm sản xuất
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Vùng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Catalogy.CatalogyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchasePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vintage)
+            </td>
+            <td>
+                @{ 
+                    string path = "~/Images/" + item.Image;
+                }
+                <img src="@Url.Content(path)" alt="Ảnh thay thế" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.ActionLink("Xóa", "XoaDuLieu", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,111 @@
+﻿@model Kiemtra2Demo.Models.Product
+
+@{
+    ViewBag.Title = "XoaDuLieu";
+}
+
+<h2>Xoa du lieu</h2>
+
+<h3>Bạn có chắc muốn xóa</h3>
+<div>
+    <h4>Sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchasePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchasePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vintage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vintage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Catalogy.CatalogyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Catalogy.CatalogyName)
+        </dd>
+
+        <dt>
+            Hình ảnh :
+        </dt>
+
+        <dd>
+            @{
+                string path = "~/Images/" + Model.Image;
+            }
+            <img src="@Url.Content(path)" alt="Ảnh thay thế" width="100" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+@if (ViewBag.Error != null)
+{
+    <div class="danger alert-danger" role="alert">@ViewBag.error</div>
+}

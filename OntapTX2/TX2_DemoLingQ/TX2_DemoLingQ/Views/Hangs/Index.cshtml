@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TX2_DemoLingQ.Models.Hang>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách mặt hàng</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã hàng
+        </th>
+        <th>
+            Tên hàng
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gia)
+        </td>
+        
+        <td>
+            @{ 
+                string path = "~/wwwroot/iamges/" + item.HinhAnh;
+            }
+            <img src="@Url.Content(path)" alt="anh minh hoat" width="100" class="img-thumbnail" />
+            @Html.DisplayFor(modelItem => item.HinhAnh)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MaHang.Trim() }) |
+            @Html.ActionLink("Xem chi tiết", "Details", new { id=item.MaHang.Trim() }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MaHang.Trim() })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,54 @@
+﻿@model TX1_De2.Models.NhanVien
+
+@{
+    ViewBag.Title = "Xuat";
+}
+
+<h2>Xuat</h2>
+<style>
+    td{
+        background-color:antiquewhite;
+    }
+    img{
+        width: 100px;
+    }
+</style>
+<div>
+    <h4>Thông tin nhân viên</h4>
+    <table border="1" cellspacing="0">
+        <tr>
+            <th>Mã nhân viên</th>
+            <th>Họ tên</th>
+            <th>Giới tính</th>
+            <th>Ảnh đại diện</th>
+            <th>Địa chỉ</th>
+            <th>Số ngày làm</th>
+            <th>Lương ngày</th>
+            <th>Tiền lương</th>
+        </tr>
+        <tr>
+            <td>@Model.manv</td>
+            <td>@Model.hoten</td>
+            <td>@Model.gioitinh</td>
+            <td>
+                @{
+                    if (Model.gioitinh == "Nam")
+                    {
+                        <img src="~/image/avt2.jpg" alt="lỗi" />
+                    }
+                    else
+                    {
+                        <img src="~/image/Yuamika.jpg" alt="lỗi" />
+                    }
+                }
+            </td>
+            <td>@Model.diachi</td>
+            <td>@Model.songaylam</td>
+            <td>@Model.luongngay</td>
+            <td>@Model.tienluong</td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Nhap")
+</p>

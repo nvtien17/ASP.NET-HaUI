@@ -1,0 +1,69 @@
+﻿@model IEnumerable<baiktra2.Models.Product>
+@{
+    ViewBag.Title = "XemDanhSach";
+}
+
+<h2>XemDanhSach</h2>
+
+@using(Html.BeginForm())
+{
+    <label >Tìm : </label>
+    <input type="text" name="search" />
+    <input type="submit" name="name" value="tim" />
+}
+<table class="table">
+    <tr>
+        <th>
+            ma sp
+        </th>
+        <th>
+            ten sp
+        </th>
+        <th>
+            gia
+        </th>
+        <th>
+            so luong
+        </th>
+        <th>
+            danh muc
+        </th>
+        <th>
+            anh
+        </th>
+        <th>
+            yy
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Catalogy.CatalogyName)
+            </td>
+            <td>
+                @{ 
+                    string path = "~/Images/" + item.Image;
+                }
+                <img src="@Url.Content(path)" width="100" alt="Alternate Text" />
+            </td>
+            <td>
+                @Html.ActionLink("Xóa", "XoaDuLieu", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>

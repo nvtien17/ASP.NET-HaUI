@@ -1,0 +1,15 @@
+﻿
+@model IEnumerable<Demo_KTHP.Models.Phong>
+
+<style>
+    a {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+</style>
+@foreach (var item in Model)
+{
+    var url = "/danhmuc/" + item.Maphong;
+    <a href="@url">@item.Tenphong</a>
+
+}

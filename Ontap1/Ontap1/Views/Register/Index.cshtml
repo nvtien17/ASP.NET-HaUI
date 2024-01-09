@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @using (Html.BeginForm("Save2", "Register"))
+    {
+        <table border="1" style="border-collapse:collapse" cellpadding="10">
+            <tr>
+                <th colspan="2"><h2>Registration Form</h2></th>
+            </tr>
+            <tr>
+                <td>@Html.Label("First name")</td>
+                <td>@Html.TextBox("fname")</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Last name")</td>
+                <td>@Html.TextBox("lname")</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Email")</td>
+                <td>@Html.TextBox("email")</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Password")</td>
+                <td>@Html.Password("passw")</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("City")</td>
+                <td>
+                    @{
+                        IEnumerable<string> strCity = new List<string>
+                                        { "Ha Noi", "Thai Nguyen", "Hai Phong"};
+                    }
+                    @Html.DropDownList("city", new SelectList(strCity, strCity.FirstOrDefault()))
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Gender")</td>
+                <td>
+                    @Html.RadioButton("gender", "Male") Male
+                    @Html.RadioButton("gender", "Female") Female
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Subjects")</td>
+                <td>
+                    @Html.CheckBox("Math") Math
+                    @Html.CheckBox("Physical") Physical
+                    @Html.CheckBox("English") English
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Save" /></td>
+                <td><input type="reset" value="Cancle" /></td>
+            </tr>
+        </table>
+    }
+</body>
+</html>

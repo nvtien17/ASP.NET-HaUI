@@ -1,0 +1,94 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        label{
+            width: 120px;
+            float: left;
+        }
+        div{
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+    <div> 
+        <h2>Simple Calculator</h2>
+        @{ 
+            var tong = 0;
+            var hieu = 0;
+            var tich = 0;
+            var thuong = 0.00;
+            var ketqua ="";
+            var num1 = "";
+            var num2 = "";
+
+            var message = "";
+            if (IsPost)
+            {
+                num1 = Request["num1"];
+                num2 = Request["num2"];
+
+                tong = num1.AsInt() + num2.AsInt();
+                hieu = num1.AsInt() - num2.AsInt();
+                tich = num1.AsInt() * num2.AsInt();
+                if(num2.AsInt() == 0)
+                {
+                    message = "Không thể chia!";
+                }
+                else
+                {
+                    thuong = (double)num1.AsInt() / num2.AsInt();
+                }
+
+
+
+                if (Request["cong"] == "Cộng")
+                {
+                    ketqua = tong.ToString();
+                }else if(Request["tru"] == "Trừ")
+                {
+                    ketqua = hieu.ToString();
+                }else if(Request["nhan"] == "Nhân")
+                {
+                    ketqua = tich.ToString();
+                }else if(Request["chia"] == "Chia")
+                {
+                    ketqua = thuong.ToString();
+                }
+
+            }
+
+        }
+    <form action="/" method="post">
+        <div>
+            <label>Nhập số thứ nhất : </label>
+            <input type="text" name="num1" value="@num1" />
+        </div>
+        <div>
+            <label>Nhập số thứ hai : </label>
+            <input type="text" name="num2"  value="@num2" />
+        </div>
+        <div>
+            <label>Kết quả : </label> 
+            <input type="text" name="result" value="@ketqua"  disabled/>
+        </div>
+        <div class="btn-group">
+            <input type="submit" name="cong" value="Cộng" />
+            <input type="submit" name="tru" value="Trừ" />
+            <input type="submit" name="nhan" value="Nhân" />
+            <input type="submit" name="chia" value="Chia" />
+        </div>
+        <div>@message</div>
+    </form>
+    </div>
+</body>
+</html>

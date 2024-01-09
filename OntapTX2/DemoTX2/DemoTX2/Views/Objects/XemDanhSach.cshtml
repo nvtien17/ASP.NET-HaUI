@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DemoTX2.Models.Product>
+
+@{
+    ViewBag.Title = "XemDanhSach";
+}
+
+<h2>Xem Danh Sách</h2>
+@using (Html.BeginForm())
+{
+    <input type="text" name="input" placeholder="Nhập giá bán" />
+    <input type="submit" value="Tìm kiếm" />
+
+}
+<p>
+    @Html.ActionLink("Thêm mới", "ThemDuLieu")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã sản phẩm
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Danh mục sản phẩm
+        </th>
+
+        <th>
+            Giá nhập
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Năm sản xuất
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th>
+            Vùng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Catalogy.CatalogyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchasePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vintage)
+            </td>
+            <td>
+                @{
+                    string path = "~/HinhAnh/" + item.Image;
+                }
+                <img src="@Url.Content(path)" alt="Lỗi hiện ảnh" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.ActionLink("Xóa ", "XoaDuLieu", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>

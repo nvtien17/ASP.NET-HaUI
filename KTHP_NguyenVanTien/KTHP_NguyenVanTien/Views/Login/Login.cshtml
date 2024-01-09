@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm())
+{
+    <lable> Tên đăng nhập</lable>
+    <input type="text" name="username" value="" />
+    <br />
+    <lable> Mật khẩu</lable>
+    <input type="password" name="password" value="" />
+    <br />
+    <input type="submit" name="" value="Đăng nhập" />
+
+}
+@ViewBag.error

@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Nhap";
+}
+
+<h2 class="test">Nhap</h2>
+
+@using (Html.BeginForm("Xuat", "QuanLyNhanVien", FormMethod.Post))   
+{
+                <table border="1" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td>@Html.Label("Mã nhân viên : ",new {@class = "test"})</td>
+                        <td>@Html.TextBox("manv", "")</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Tên nhân viên : ")</td>
+                        <td>@Html.TextBox("hoten", "")</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.Label("Giới tính")
+                        </td>
+                        <td>
+                            @Html.RadioButton("gioitinh", "Nam") Nam
+                            @Html.RadioButton("gioitinh", "Nữ") Nữ
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Địa chỉ : ")</td>
+                        <td>
+                            @{
+                                IEnumerable<string> listDc = new List<string> { "Hà nội", "Hải phòng", "Quảng ninh" };
+                            }
+                            @Html.DropDownList("diachi",new SelectList(listDc, listDc.FirstOrDefault()))
+                          </td>
+  
+                      </tr>
+                    <tr>
+                        <td>@Html.Label("Số ngày làm : ")</td>
+                        <td>@Html.TextBox("songaylam","")</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Lương ngày : ")</td>
+                        <td>@Html.TextBox("luongngay","")</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            @Html.TextBox("submit","Nhập", new { Type = "submit" })
+                        </td>
+                    </tr>
+                  </table>
+            }

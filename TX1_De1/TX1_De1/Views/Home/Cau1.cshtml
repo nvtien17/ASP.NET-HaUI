@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Cau1";
+}
+
+@{ 
+    double thanhTien = 0;
+    var txtThanhTien = "";
+    var maHang = "";
+    var tenHang = "";
+    var loaiHang = "";
+    var soLuong = "";
+    var donGia = "";
+    var test = "";
+    var test1 = "";
+
+    if (IsPost)
+    {
+        maHang = Request["maHang"];
+        tenHang = Request["tenHang"];
+        test = Request["test"];
+        test1 = Request["test1"];
+
+        loaiHang = Request["loaiHang"];
+        soLuong = Request["soLuong"];
+        donGia = Request["donGia"];
+
+        if(soLuong.AsInt() >= 100)
+        {
+            thanhTien = soLuong.AsInt() * donGia.AsFloat() * 0.9;
+        }
+        else
+        {
+            thanhTien = soLuong.AsInt() * donGia.AsFloat();
+
+        }
+
+        txtThanhTien = thanhTien.ToString("N2");
+    }
+}
+<style>
+    table{
+        margin-top: 10%;
+        margin-left:50%;
+        transform: translateX(-50%);
+    }
+    td{
+        padding: 7px 20px;
+    }
+</style>
+<form action="" method="post">
+    <table border="1" cellspacing="0">
+        <tr>
+            <td>
+                <label for="maHang"> Mã hàng : </label>
+            </td>
+            <td>
+                <input type="text" name="maHang" value="@maHang" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="tenHang"> Tên hàng : </label>
+            </td>
+            <td>
+                <input type="text" name="tenHang" value="@tenHang" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="test"> Test hàng : </label>
+            </td>
+            <td>
+                @*<input type="radio" name="test" value="Cũ" @(test == "Cũ" ? "checked" : "")/> Cũ
+        <input type="radio" name="test" value="Mới" @(test == "Mới" ? "checked" : "") /> Mới*@
+                @*@Html.RadioButton("test", "cu", test == "cu") cũ
+        @Html.RadioButton("test", "moi", test == "moi") mới*@
+                @Html.CheckBox("test", test == "true,false") Cũ
+                
+                @Html.CheckBox("test1", test1 == "true,false") Mới
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="loaiHang"> Loại hàng : </label>
+            </td>
+            <td>
+                <select name="loaiHang">
+                    <option value="quanAo" @(loaiHang == "quanAo" ? "selected" : "")>Quần áo</option>
+                    <option value="dienTu" @(loaiHang == "dienTu" ? "selected" : "")>Điện tử</option>
+                    <option value="giaDung" @(loaiHang == "giaDung" ? "selected" : "")>Gia dụng</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="donGia"> Đơn giá : </label>
+            </td>
+            <td>
+                <input type="text" name="donGia" value="@donGia" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="soLuong"> Số luọng : </label>
+            </td>
+            <td>
+                <input type="text" name="soLuong" value="@soLuong" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="thanhTien"> Thành tiền : </label>
+            </td>
+            <td>
+                <input type="text" name="thanhTien" value="@txtThanhTien" disabled />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" name="btnTinh" value="Tính" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+
